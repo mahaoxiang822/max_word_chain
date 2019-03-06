@@ -1,10 +1,20 @@
 #pragma once
+#ifdef MY_DLL_API
+#else
+#define MY_DLL_API _declspec(dllimport)
+#endif
+
+
+
 #include <string>
 #include<vector>
 #include <iostream>
 #include <vector>
+
+
+
 using namespace std;
-class InputHandler
+class MY_DLL_API InputHandler
 {
 public:
 	InputHandler();
@@ -20,14 +30,15 @@ public:
 	void handle_readin();
 	void clear_duplicate();
 	void handle_parameters(int para_num, vector<string> para);
-	
- 
+
+
 
 private:
 	string readin;
-	
-	
-	
+
+
+
 };
+
 
 
