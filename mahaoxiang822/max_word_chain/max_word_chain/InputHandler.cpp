@@ -55,9 +55,7 @@ void InputHandler::handle_readin() {
 void InputHandler::clear_duplicate() {
 	sort(word_list.begin(), word_list.end());
 	word_list.erase(unique(word_list.begin(), word_list.end()), word_list.end());
-	for (int i = 0; i < word_list.size(); i++) {
-		cout << word_list[i] << endl;
-	}
+
 }
 
 void InputHandler::handle_parameters(int para_num,vector<string> para) {
