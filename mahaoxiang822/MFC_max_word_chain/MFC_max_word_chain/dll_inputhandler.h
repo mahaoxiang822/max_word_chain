@@ -1,10 +1,14 @@
 #pragma once
+
 #include <string>
 #include<vector>
 #include <iostream>
 #include <vector>
+
+
+
 using namespace std;
-class InputHandler
+class  InputHandler
 {
 public:
 	InputHandler();
@@ -20,14 +24,15 @@ public:
 	void handle_readin();
 	void clear_duplicate();
 	void handle_parameters(int para_num, vector<string> para);
-	
- 
+
+
 
 private:
 	string readin;
-	
-	
-	
+
+
+
 };
+
 
 
