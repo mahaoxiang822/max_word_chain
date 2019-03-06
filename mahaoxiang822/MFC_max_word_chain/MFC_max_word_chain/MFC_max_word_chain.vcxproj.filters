@@ -30,6 +30,12 @@
     <ClInclude Include="Resource.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="Core.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="stdc++.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="MFC_max_word_chain.cpp">
@@ -39,6 +45,9 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="stdafx.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Core.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
