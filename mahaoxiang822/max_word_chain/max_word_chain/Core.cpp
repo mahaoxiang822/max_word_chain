@@ -212,9 +212,10 @@ void Core::loop_max_chain(char start_char, bool set_start, char end_set, bool se
 		}
 		
 	}
-	
+	int time = 0;
 	for (auto it = start_set.begin(); it != start_set.end(); it++) {
 		dfs(*it, visit, path[*it], dist[*it], longest_word);
+		cout << time++ << endl;
 		//for(int i=0;i<word_num;i++) cout << path[*it][i] << " ";
 		//cout << "-----------------" << endl;
 	}

@@ -31,6 +31,11 @@ bool InputHandler::file_read() {
 	return true;
 }
 
+void InputHandler::string_read(string input) {
+	
+	readin = input;
+}
+
 void InputHandler::handle_readin() {
 	string word="";
 	for (int i = 0; i < readin.size(); i++) {
