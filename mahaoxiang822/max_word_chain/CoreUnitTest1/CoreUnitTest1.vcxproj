@@ -20,9 +20,9 @@
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
-    <ProjectGuid>{00A627F6-AAC0-40F7-AEAD-1415341232B5}</ProjectGuid>
+    <ProjectGuid>{B09C883F-44E4-4723-AFCD-BE554E05D8D4}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
-    <RootNamespace>InputHandlerTest</RootNamespace>
+    <RootNamespace>CoreUnitTest1</RootNamespace>
     <WindowsTargetPlatformVersion>10.0.17763.0</WindowsTargetPlatformVersion>
     <ProjectSubType>NativeUnitTestProject</ProjectSubType>
   </PropertyGroup>
@@ -99,6 +99,7 @@
     <Link>
       <SubSystem>Windows</SubSystem>
       <AdditionalLibraryDirectories>$(VCInstallDir)UnitTest\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>../max_word_chain/Debug/Core.obj;../max_word_chain/Debug/pch.obj;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
