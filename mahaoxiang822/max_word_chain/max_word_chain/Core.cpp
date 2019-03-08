@@ -214,10 +214,9 @@ void Core::loop_max_chain(char start_char, bool set_start, char end_set, bool se
 		}
 		
 	}
-	int time = 0;
+	
 	for (auto it = start_set.begin(); it != start_set.end(); it++) {
 		dfs(*it, visit, path[*it], dist[*it], longest_word);
-		cout << time++ << endl;
 		//for(int i=0;i<word_num;i++) cout << path[*it][i] << " ";
 		//cout << "-----------------" << endl;
 	}
@@ -283,14 +282,8 @@ vector<string> Core::array2string(char *words[], int len) {
 int Core::string2array(vector<string> string_list, char *words[]) {//·µ»Ø³¤¶È
 	int size = (int) string_list.size();
 	for (int i = 0; i < size; i++) {
-		int len = string_list[i].length();
-		words[i] = new char[len + 3];
-		strcpy_s(words[i], string_list[i].length()+1, string_list[i].c_str());
-		/*for (int j = 0; j < len; j++) {
-			words[i][j] = string_list[i][j];
-		}
-		*/
-		words[i][len] = '\0';
+		words[i] = new char[string_list[i].length() + 1];
+		strcpy_s(words[i], string_list[i].length()+10, string_list[i].c_str());
 	}
 	return size;
 }
