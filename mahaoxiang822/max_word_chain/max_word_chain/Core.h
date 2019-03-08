@@ -5,7 +5,7 @@
 using namespace std;
 typedef struct {
 	string word;
-	unsigned int length;
+	int length;
 }word_info;
 
 
@@ -17,7 +17,8 @@ public://first step ,we need to remove same words
 	// interface to mhx, return length of the final result list
 	int max_chain_word(vector<string> word_list, vector<string> &result, char head, char tail, bool enable_loop);
 	int max_chain_char(vector<string> word_list, vector<string> &result, char head, char tail, bool enable_loop);
-
+	vector<string> array2string(char *words[], int len);
+	int string2array(vector<string> string_list, char *words[]);
 private:
 	vector<word_info> word_list;// input word list
 	vector<int> in_degree;

@@ -7,9 +7,11 @@ using namespace std;
 
 
 void Core::form_digraph(vector<string> word_list) {
+	this->word_list.clear();
+	this->digraph.clear();
 	int word_id = 0;
 	for (auto it = word_list.begin(); it != word_list.end(); it++) {//遍历所有的单词，统计单词的长度
-		this->word_list.push_back(word_info{ *it, (*it).length() });
+		this->word_list.push_back(word_info{ *it, (int)(*it).length() });
 		char head_char = (*it)[0];
 		head_char_list[head_char].push_back(word_id);//将单词按照头字母放入
 		word_id++;
@@ -37,7 +39,7 @@ void Core::remove_node(int v_id, vector<int > &degree) {
 }
 
 bool Core::has_loop() {
-	int word_num = word_list.size();
+	int word_num = (int)word_list.size();
 	vector<int > in_degree_copy= in_degree;
 	// step 1, if there doesn't exist a node whose indegree is 0, then has loop;
 	vector<int> indegree_zero_id;
@@ -73,7 +75,7 @@ bool Core::SPFA(char start_char,bool set_start, char tail_char, bool set_end, bo
 {	
 	int t;
 	vector<int> start_set;
-	int word_num = word_list.size();
+	int word_num = (int) word_list.size();
 	queue<int> Q;
 	vector<bool> visited(word_num);
 	vector<int> dist(word_num);
@@ -184,7 +186,7 @@ void Core::dfs(int v_id, vector<bool> &visit, vector<int> &path, vector<int> &di
 }
 
 void Core::loop_max_chain(char start_char, bool set_start, char end_set, bool set_end, bool longest_word) {
-	int word_num = word_list.size();
+	int word_num = (int) word_list.size();
 	vector<int> start_set;
 	map<int,vector<int>> path;
 	vector<bool> visit(word_num);
@@ -229,7 +231,7 @@ void Core::loop_max_chain(char start_char, bool set_start, char end_set, bool se
 			auto max = max_element(dist[*it].begin(), dist[*it].end());
 			if (*max > max_chain) {
 				start_point = *it;
-				index = max - dist[*it].begin();
+				index =(int) (max - dist[*it].begin());
 				max_chain = *max;
 			}
 		}
@@ -269,7 +271,7 @@ void Core::loop_max_chain(char start_char, bool set_start, char end_set, bool se
 	}
 }
 
-vector<string> array2string(char *words[], int len) {
+vector<string> Core::array2string(char *words[], int len) {
 	vector<string> res;
 	for (int i = 0; i < len; i++) {
 		string s = words[i];
@@ -278,10 +280,10 @@ vector<string> array2string(char *words[], int len) {
 	}
 	return res;
 }
-int string2array(vector<string> string_list, char *words[]) {//返回长度
-	int size = string_list.size();
+int Core::string2array(vector<string> string_list, char *words[]) {//返回长度
+	int size = (int) string_list.size();
 	for (int i = 0; i < size; i++) {
-		words[i] = (char *)malloc(sizeof(char));
+		words[i] = new char[string_list[i].length() + 1];
 		strcpy_s(words[i], string_list[i].length()+10, string_list[i].c_str());
 	}
 	return size;
@@ -317,7 +319,7 @@ int Core::max_chain_word(vector<string> word_list, vector<string> &result, char 
 	form_digraph(word_list);
 	bool loop_flag = has_loop();
 	if (loop_flag && !enable_loop)
-		return -1;
+		return 0;
 	if (!loop_flag) {
 		SPFA(head, head != 0, tail, tail != 0, true);
 	}
@@ -325,7 +327,7 @@ int Core::max_chain_word(vector<string> word_list, vector<string> &result, char 
 		loop_max_chain(head, head != 0, tail, tail != 0, true);
 	}
 	result = this->result_list_word;
-	return result.size();
+	return (int) result.size();
 }
 int Core::max_chain_char(vector<string> word_list, vector<string> &result, char head, char tail, bool enable_loop) {
 	form_digraph(word_list);
@@ -339,7 +341,7 @@ int Core::max_chain_char(vector<string> word_list, vector<string> &result, char 
 		loop_max_chain(head, head != 0, tail, tail != 0, false);
 	}
 	result = this->result_list_char;
-	return result.size();
+	return (int) result.size();
 }
 
 
