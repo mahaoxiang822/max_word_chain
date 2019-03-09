@@ -282,8 +282,9 @@ vector<string> Core::array2string(char *words[], int len) {
 int Core::string2array(vector<string> string_list, char *words[]) {//·µ»Ø³¤¶È
 	int size = (int) string_list.size();
 	for (int i = 0; i < size; i++) {
-		words[i] = new char[string_list[i].length() + 1];
-		strcpy_s(words[i], string_list[i].length()+10, string_list[i].c_str());
+		int len = string_list[i].length();
+		words[i] = new char[len + 3];
+		strcpy_s(words[i], len+3, string_list[i].c_str());
 	}
 	return size;
 }
@@ -318,7 +319,7 @@ int Core::max_chain_word(vector<string> word_list, vector<string> &result, char 
 	form_digraph(word_list);
 	bool loop_flag = has_loop();
 	if (loop_flag && !enable_loop)
-		return 0;
+		return -1;
 	if (!loop_flag) {
 		SPFA(head, head != 0, tail, tail != 0, true);
 	}
