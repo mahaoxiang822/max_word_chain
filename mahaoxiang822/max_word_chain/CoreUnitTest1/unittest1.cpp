@@ -131,12 +131,47 @@ namespace CoreUnitTest1
 			Assert::IsTrue(judge(core.array2string(results, res), core.array2string(answer, answer_num)));
 		}
 		TEST_METHOD(TestMethod10) {
-			Core core;
-			int word_num = 9;
-			int answer_num = 4;
-			char **results = new char*[word_num + 1];
-			int res = core.gen_chain_word(test_list3, word_num, results, 0, 0,false);
-			Assert::IsTrue(res == -1);
+			try {
+				Core core;
+				int word_num = 9;
+				int answer_num = 4;
+				char **results = new char*[word_num + 1];
+				int res = core.gen_chain_word(test_list3, word_num, results, 0, 0, false);
+				Assert::IsTrue(res == -1);
+			}
+			catch (const char*  s) {
+				Assert::IsTrue(s == LOOP_ERROR);
+				cout << s << endl;
+			}
+			
+		}
+
+		TEST_METHOD(TestMethod11) {
+			try {
+				Core core;
+				int word_num = 9;
+				int answer_num = 4;
+				char **results = new char*[word_num + 1];
+				int res = core.gen_chain_word(test_list3, word_num + 13, results, 0, 0, false);
+			}
+			catch (const char* s) {
+				Assert::IsTrue(s == MEMORY_ERROR);
+				cout << s << endl;
+			}
+		}
+		TEST_METHOD(TestMethod12) {
+			char *test_list[] = {"happ1we2", "yuer", "opui8op"};
+			try {
+				Core core;
+				int word_num = 3;
+				int answer_num = 0;
+				char **results = new char*[word_num + 1];
+				int res = core.gen_chain_word(test_list, word_num, results, 0, 0, false);
+			}
+			catch (const char* s) {
+				Assert::IsTrue(s == WORD_ILLEGAL);
+				cout << s << endl;
+			}
 		}
 	};
 }

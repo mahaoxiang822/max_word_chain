@@ -4,7 +4,17 @@
 #include "Core.h"
 using namespace std;
 
-
+bool check_word_legal(vector<string> word_list) {
+	int size = word_list.size();
+	for (int i = 0; i < size; i++) {
+		string s = word_list[i];
+		for (int j = 0; j < s.length(); j++) {
+			if (!(s[j] >= 'a' &&s[j] <= 'z'))
+				return false;
+		}
+	}
+	return true;
+}
 
 void Core::form_digraph(vector<string> word_list) {
 	this->word_list.clear();
@@ -272,11 +282,19 @@ void Core::loop_max_chain(char start_char, bool set_start, char end_set, bool se
 
 vector<string> Core::array2string(char *words[], int len) {
 	vector<string> res;
-	for (int i = 0; i < len; i++) {
-		string s = words[i];
-		res.push_back(s);
-		//cout << s << endl;
-	}
+	string s;
+		for (int i = 0; i < len; i++) {
+			try {
+				s = words[i];
+			}
+			catch (...)
+			{
+				throw MEMORY_ERROR;
+			}
+			res.push_back(s);
+			//cout << s << endl;
+		}
+	
 	return res;
 }
 int Core::string2array(vector<string> string_list, char *words[]) {//·µ»Ø³¤¶È
@@ -316,10 +334,16 @@ int Core::gen_chain_char(char* words[], int len, char* result[], char head, char
 
 }
 int Core::max_chain_word(vector<string> word_list, vector<string> &result, char head, char tail, bool enable_loop) {
+	if (!check_word_legal(word_list))
+		throw WORD_ILLEGAL;
 	form_digraph(word_list);
 	bool loop_flag = has_loop();
 	if (loop_flag && !enable_loop)
-		return -1;
+		throw LOOP_ERROR;
+	if (tail != 0 && !(tail >= 'a'&& tail <= 'z'))
+		throw TAIL_CHAR_ERROR;
+	if (head != 0 && !(head >= 'a' && head <= 'z'))
+		throw HEAD_CHAR_ERROR;
 	if (!loop_flag) {
 		SPFA(head, head != 0, tail, tail != 0, true);
 	}
@@ -330,10 +354,16 @@ int Core::max_chain_word(vector<string> word_list, vector<string> &result, char 
 	return (int) result.size();
 }
 int Core::max_chain_char(vector<string> word_list, vector<string> &result, char head, char tail, bool enable_loop) {
+	if (!check_word_legal(word_list))
+		throw WORD_ILLEGAL;
 	form_digraph(word_list);
 	bool loop_flag = has_loop();
 	if (loop_flag && !enable_loop)
-		return -1;
+		throw "There exists loop in input, but we don't support -r";
+	if (tail != 0 && !(tail >= 'a'&& tail <= 'z'))
+		throw TAIL_CHAR_ERROR;
+	if (head != 0 && !(head >= 'a' && head <= 'z'))
+		throw HEAD_CHAR_ERROR;
 	if (!loop_flag) {
 		SPFA(head, head != 0, tail, tail != 0, false);
 	}
