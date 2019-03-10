@@ -14,7 +14,7 @@
 
 
 using namespace std;
-class  InputHandler
+class InputHandler
 {
 public:
 	InputHandler();

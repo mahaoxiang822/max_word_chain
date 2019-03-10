@@ -27,6 +27,7 @@ public:
 	bool enable_loop;
 	bool console_read();
 	bool file_read();
+	void string_read(string input);
 	void handle_readin();
 	void clear_duplicate();
 	void handle_parameters(int para_num, vector<string> para);

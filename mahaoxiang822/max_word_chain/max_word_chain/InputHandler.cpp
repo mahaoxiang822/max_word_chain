@@ -64,6 +64,10 @@ void InputHandler::handle_readin() {
 				}
 			}
 		}
+		if (word.size() != 0) {
+			word_list.push_back(word);
+			word = "";
+		}
 	}
 	catch (...) {
 		throw("handle readin exception");

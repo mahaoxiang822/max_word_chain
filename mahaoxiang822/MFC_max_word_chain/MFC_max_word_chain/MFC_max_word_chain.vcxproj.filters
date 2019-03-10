@@ -30,13 +30,13 @@
     <ClInclude Include="Resource.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="Core.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
     <ClInclude Include="stdc++.h">
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="dll_inputhandler.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Core.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>
@@ -48,9 +48,6 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="stdafx.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="Core.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
@@ -71,6 +68,9 @@
   </ItemGroup>
   <ItemGroup>
     <Library Include="dll_inputhandler.lib">
+      <Filter>资源文件</Filter>
+    </Library>
+    <Library Include="dll_core.lib">
       <Filter>资源文件</Filter>
     </Library>
   </ItemGroup>
