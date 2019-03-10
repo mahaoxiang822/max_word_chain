@@ -51,7 +51,11 @@ void InputHandler::handle_readin() {
 		for (int i = 0; i < readin.size(); i++) {
 			if (('a' <= readin[i] && 'z' >= readin[i]) ||
 				('A' <= readin[i] && 'Z' >= readin[i])) {
-				word += readin[i];
+				char temp = readin[i];
+				if ('A' <= temp && 'Z' >= temp) {
+					temp = temp - ('A' - 'a');
+				}
+				word += temp;
 			}
 			else {
 				if (word.size() == 0) {
