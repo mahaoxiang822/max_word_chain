@@ -35,12 +35,6 @@
     <ClCompile Include="max_word_chain.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="InputHandler.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="Core.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Text Include="wordlist.txt">
@@ -49,5 +43,13 @@
     <Text Include="in.txt">
       <Filter>资源文件</Filter>
     </Text>
+  </ItemGroup>
+  <ItemGroup>
+    <Library Include="dll_core.lib">
+      <Filter>资源文件</Filter>
+    </Library>
+    <Library Include="dll_inputhandler.lib">
+      <Filter>资源文件</Filter>
+    </Library>
   </ItemGroup>
 </Project>
