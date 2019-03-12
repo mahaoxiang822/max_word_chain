@@ -32,9 +32,6 @@
     <ClCompile Include="max_word_chain.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="unitTestMain.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Text Include="wordlist.txt">
