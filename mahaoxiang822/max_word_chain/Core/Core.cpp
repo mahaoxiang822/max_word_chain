@@ -13,7 +13,7 @@ bool check_word_legal(vector<string> word_list) {
 	int size = word_list.size();
 	for (int i = 0; i < size; i++) {
 		string s = word_list[i];
-		for (int j = 0; j < s.length(); j++) {
+		for (int j = 0; j < (int)s.length(); j++) {
 			if (!(s[j] >= 'a' &&s[j] <= 'z'))
 				return false;
 		}
