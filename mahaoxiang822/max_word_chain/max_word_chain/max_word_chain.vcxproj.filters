@@ -42,9 +42,6 @@
     </Text>
   </ItemGroup>
   <ItemGroup>
-    <Library Include="dll_inputhandler.lib">
-      <Filter>资源文件</Filter>
-    </Library>
     <Library Include="Core.lib">
       <Filter>资源文件</Filter>
     </Library>
