@@ -70,7 +70,7 @@
     <Library Include="dll_inputhandler.lib">
       <Filter>资源文件</Filter>
     </Library>
-    <Library Include="dll_core.lib">
+    <Library Include="Core.lib">
       <Filter>资源文件</Filter>
     </Library>
   </ItemGroup>
