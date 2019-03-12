@@ -152,7 +152,6 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="Core.h" />
-    <ClInclude Include="InputHandler.h" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="stdc++.h" />
   </ItemGroup>

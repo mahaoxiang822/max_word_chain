@@ -184,7 +184,6 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="Core.h" />
-    <ClInclude Include="dll_inputhandler.h" />
     <ClInclude Include="MFC_max_word_chain.h" />
     <ClInclude Include="MFC_max_word_chainDlg.h" />
     <ClInclude Include="Resource.h" />
@@ -212,8 +211,7 @@
     <Image Include="res\MFC_max_word_chain.ico" />
   </ItemGroup>
   <ItemGroup>
-    <Library Include="dll_core.lib" />
-    <Library Include="dll_inputhandler.lib" />
+    <Library Include="Core.lib" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

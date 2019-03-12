@@ -1,11 +1,10 @@
 #pragma once
+#define DLL_INPUTHANDLER_EXPORTS
 #ifdef DLL_INPUTHANDLER_EXPORTS
 #define DLL_INPUTHANDLER_API _declspec(dllexport)
 #else
 #define DLL_INPUTHANDLER_API _declspec(dllimport)
 #endif
-
-
 
 #include <string>
 #include<vector>

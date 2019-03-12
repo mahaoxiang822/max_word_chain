@@ -33,9 +33,6 @@
     <ClInclude Include="stdc++.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="dll_inputhandler.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
     <ClInclude Include="Core.h">
       <Filter>头文件</Filter>
     </ClInclude>
@@ -67,10 +64,7 @@
     </Image>
   </ItemGroup>
   <ItemGroup>
-    <Library Include="dll_inputhandler.lib">
-      <Filter>资源文件</Filter>
-    </Library>
-    <Library Include="dll_core.lib">
+    <Library Include="Core.lib">
       <Filter>资源文件</Filter>
     </Library>
   </ItemGroup>
