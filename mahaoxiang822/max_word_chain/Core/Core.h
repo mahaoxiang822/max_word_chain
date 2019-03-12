@@ -1,11 +1,14 @@
 #pragma once
-#ifdef MY_DLL_API
-#else
-#define MY_DLL_API _declspec(dllimport)
-#endif
-
 #include <iostream>
 #include "stdc++.h"
+#ifdef CORE_EXPORTS
+#define CORE_API __declspec(dllexport)
+#else
+#define CORE_API _declspec(dllimport)
+#endif
+
+
+
 using namespace std;
 #define HEAD_CHAR_ERROR "Head char is not in a-z"
 #define LOOP_ERROR "There exists loop in input, but we don't support -r"
@@ -17,7 +20,7 @@ typedef struct {
 	int length;
 }word_info;
 
-class MY_DLL_API Core {
+class CORE_API Core {
 
 public://first step ,we need to remove same words
 	int gen_chain_word(char *words[], int len, char *result[], char head, char tail, bool enable_loop);

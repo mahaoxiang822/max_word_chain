@@ -1,7 +1,8 @@
 #pragma once
-#ifdef MY_DLL_API
+#ifdef DLL_INPUTHANDLER_EXPORTS
+#define DLL_INPUTHANDLER_API _declspec(dllexport)
 #else
-#define MY_DLL_API _declspec(dllimport)
+#define DLL_INPUTHANDLER_API _declspec(dllimport)
 #endif
 
 
@@ -9,12 +10,11 @@
 #include <string>
 #include<vector>
 #include <iostream>
-#include <vector>
 
 
 
 using namespace std;
-class MY_DLL_API InputHandler
+class DLL_INPUTHANDLER_API InputHandler
 {
 public:
 	InputHandler();

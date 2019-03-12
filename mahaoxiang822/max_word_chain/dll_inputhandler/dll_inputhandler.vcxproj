@@ -20,7 +20,7 @@
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
-    <ProjectGuid>{723C80C1-10E9-41D7-9079-1E100E433F35}</ProjectGuid>
+    <ProjectGuid>{B0D3FEFB-E43B-4CCB-86F2-E0C6C07BEF08}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>dllinputhandler</RootNamespace>
     <WindowsTargetPlatformVersion>10.0.17763.0</WindowsTargetPlatformVersion>
