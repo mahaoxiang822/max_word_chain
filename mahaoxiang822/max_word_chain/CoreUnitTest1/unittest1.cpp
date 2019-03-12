@@ -29,6 +29,15 @@ namespace CoreUnitTest1
 	char *test_list1[] = { "abc","cbd","dbbw","csw","zde","opl","wxx" };
 	char *test_list2[] = {"room", "mazhenya", "apple", "elephant","mahaoxiang","gxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx", "zzzzzzzzzzzzzzzzzzzzzzzzzzzzorange","peanut"};
 	char *test_list3[] = {"abc","cbd","bba","ddb","yz","uv","wx","vw","xy"};
+	char *test_list4[] = { "xppppy", "fb","ef","bc","de","cd","zpppb","yppppz" };
+	char *test_list5[] = { "xppppy", "fb","ef","bc","ft","tb","zpppb","yppppz" };
+	char *test_list6[] = { "xppppy", "ce","ef","bc","de","cd","zpppb","yppppz" };
+	char *test_list7[] = { "tppppppppz","zppppppppx","ab","ef","bc","de","cd" };
+	char *test_list8[] = { "ac","bz","cb","cc" };
+	char *test_list9[] = { "ac","bc","cb","cc" };//ÓÐ»·
+	char *test_list10[] = { "cx","xy","bc","zd","yz","ab","de","cpppppppppppppppppppd" };
+	char *test_list11[] = {"abc", "abc", "xyz"};
+	
 	TEST_CLASS(UnitTest1)
 	{
 	public:
@@ -140,13 +149,52 @@ namespace CoreUnitTest1
 				Assert::IsTrue(res == -1);
 			}
 			catch (const char*  s) {
-				Assert::IsTrue(s == LOOP_ERROR);
+				Assert::IsTrue(strcmp(s, LOOP_ERROR) == 0);
+				//Assert::IsTrue(s == LOOP_ERROR);
 				cout << s << endl;
 			}
-			
+			try {
+				Core core;
+				int word_num = 9;
+				int answer_num = 4;
+				char **results = new char*[word_num + 1];
+				int res = core.gen_chain_char(test_list3, word_num, results, 0, 0, false);
+				Assert::IsTrue(res == -1);
+			}
+			catch (const char*  s) {
+				Assert::IsTrue(strcmp(s, LOOP_ERROR) == 0);
+				//Assert::IsTrue(s == LOOP_ERROR);
+				cout << s << endl;
+			}
+			try {
+				Core core;
+				int word_num = 9;
+				int answer_num = 4;
+				char **results = new char*[word_num + 1];
+				int res = core.gen_chain_char(test_list3, word_num, results, '+', '-', true);
+				Assert::IsTrue(res == -1);
+			}
+			catch (const char*  s) {
+				Assert::IsTrue(strcmp(s, TAIL_CHAR_ERROR) == 0);
+				//Assert::IsTrue(s == LOOP_ERROR);
+				cout << s << endl;
+			}
+			try {
+				Core core;
+				int word_num = 9;
+				int answer_num = 4;
+				char **results = new char*[word_num + 1];
+				int res = core.gen_chain_char(test_list3, word_num, results,  '-',0, true);
+				Assert::IsTrue(res == -1);
+			}
+			catch (const char*  s) {
+				Assert::IsTrue(strcmp(s, HEAD_CHAR_ERROR) == 0);
+				//Assert::IsTrue(s == LOOP_ERROR);
+				cout << s << endl;
+			}
 		}
 
-		TEST_METHOD(TestMethod11) {
+		/*TEST_METHOD(TestMethod11) {
 			try {
 				Core core;
 				int word_num = 9;
@@ -155,10 +203,11 @@ namespace CoreUnitTest1
 				int res = core.gen_chain_word(test_list3, word_num + 13, results, 0, 0, false);
 			}
 			catch (const char* s) {
-				Assert::IsTrue(s == MEMORY_ERROR);
+				//Assert::IsTrue(s == MEMORY_ERROR);
+				Assert::IsTrue(strcmp(s, MEMORY_ERROR)==0);
 				cout << s << endl;
 			}
-		}
+		}*/
 		TEST_METHOD(TestMethod12) {
 			char *test_list[] = {"happ1we2", "yuer", "opui8op"};
 			try {
@@ -169,9 +218,164 @@ namespace CoreUnitTest1
 				int res = core.gen_chain_word(test_list, word_num, results, 0, 0, false);
 			}
 			catch (const char* s) {
-				Assert::IsTrue(s == WORD_ILLEGAL);
+				//Assert::IsTrue(s == WORD_ILLEGAL);
+				Assert::IsTrue(strcmp(s, WORD_ILLEGAL)==0);
 				cout << s << endl;
 			}
+			try {
+				Core core;
+				int word_num = 3;
+				int answer_num = 0;
+				char **results = new char*[word_num + 1];
+				int res = core.gen_chain_char(test_list, word_num, results, 0, 0, false);
+			}
+			catch (const char* s) {
+				//Assert::IsTrue(s == WORD_ILLEGAL);
+				Assert::IsTrue(strcmp(s, WORD_ILLEGAL) == 0);
+				cout << s << endl;
+			}
+		}
+		TEST_METHOD(TestMethod13)
+		{
+			char *answer1[] = { "xppppy","yppppz","zpppb","bc","cd","de","ef","fb" };
+			int word_num = 8;
+			int answer_num = 8;
+			char **results1 = new char*[word_num + 1];
+			Core core;
+			int res = core.gen_chain_word(test_list4, word_num, results1, 0, 0, true);
+			Assert::IsTrue(judge(core.array2string(results1, res), core.array2string(answer1, answer_num)));
+			for (int i = 0; i < res; i++)
+				delete[] results1[i];
+			delete[] results1;
+		}
+		TEST_METHOD(TestMethod14)
+		{
+			char *answer1[] = { "xppppy","yppppz","zpppb","bc"};
+			int word_num = 8;
+			int answer_num = 4;
+			char **results1 = new char*[word_num + 1];
+			Core core;
+			int res = core.gen_chain_word(test_list5, word_num, results1, 0, 0, false);
+			Assert::IsTrue(judge(core.array2string(results1, res), core.array2string(answer1, answer_num)));
+			for (int i = 0; i < res; i++)
+				delete[] results1[i];
+			delete[] results1;
+		}
+		TEST_METHOD(TestMethod15)
+		{
+			char *answer1[] = { "xppppy","yppppz","zpppb","bc","cd","de","ef" };
+			int word_num = 8;
+			int answer_num = 7;
+			char **results1 = new char*[word_num + 1];
+			Core core;
+			int res = core.gen_chain_word(test_list6, word_num, results1, 0, 0, false);
+			Assert::IsTrue(judge(core.array2string(results1, res), core.array2string(answer1, answer_num)));
+			for (int i = 0; i < res; i++)
+				delete[] results1[i];
+			delete[] results1;
+		}
+		TEST_METHOD(TestMethod17)
+		{
+			char *answer1[] = { "ab", "bc", "cd", "de", "ef" };
+			int word_num = 7;
+			int answer_num = 5;
+			char **results1 = new char*[word_num + 1];
+			Core core;
+			int res = core.gen_chain_word(test_list7, word_num, results1, 0, 0, true);
+			Assert::IsTrue(judge(core.array2string(results1, res), core.array2string(answer1, answer_num)));
+			for (int i = 0; i < res; i++)
+				delete[] results1[i];
+			delete[] results1;
+		}
+		TEST_METHOD(TestMethod18)
+		{
+			char *answer1[] = { "tppppppppz", "zppppppppx" };
+			int word_num = 7;
+			int answer_num = 2;
+			char **results1 = new char*[word_num + 1];
+			Core core;
+			int res = core.gen_chain_char(test_list7, word_num, results1, 0, 0, true);
+			Assert::IsTrue(judge(core.array2string(results1, res), core.array2string(answer1, answer_num)));
+			for (int i = 0; i < res; i++)
+				delete[] results1[i];
+			delete[] results1;
+		}
+		TEST_METHOD(TestMethod19)
+		{
+			char *answer1[] = { "ac", "cc", "cb","bz" };
+			int word_num = 4;
+			int answer_num = 4;
+			char **results1 = new char*[word_num + 1];
+			Core core;
+			int res = core.gen_chain_char(test_list8, word_num, results1, 0, 0, false);
+			Assert::IsTrue(judge(core.array2string(results1, res), core.array2string(answer1, answer_num)));
+			for (int i = 0; i < res; i++)
+				delete[] results1[i];
+			delete[] results1;
+		}
+		TEST_METHOD(TestMethod20)
+		{
+			char *answer1[] = { "ac", "cb", "bc", "cc" };
+			int word_num = 4;
+			int answer_num = 4;
+			char **results1 = new char*[word_num + 1];
+			Core core;
+			int res = core.gen_chain_char(test_list9, word_num, results1, 0, 0, true);
+			Assert::IsTrue(judge(core.array2string(results1, res), core.array2string(answer1, answer_num)));
+			for (int i = 0; i < res; i++)
+				delete[] results1[i];
+			delete[] results1;
+		}
+		TEST_METHOD(TestMethod21)
+		{
+			char *answer1[] = {"ab", "bc", "cx","xy","yz","zd","de" };
+			int word_num = 8;
+			int answer_num = 7;
+			char **results1 = new char*[word_num + 1];
+			Core core;
+			int res = core.gen_chain_word(test_list10, word_num, results1, 0, 0, true);
+			Assert::IsTrue(judge(core.array2string(results1, res), core.array2string(answer1, answer_num)));
+			for (int i = 0; i < res; i++)
+				delete[] results1[i];
+			delete[] results1;
+		}
+		TEST_METHOD(TestMethod22)
+		{
+			char *answer1[] = { "ab", "bc", "cpppppppppppppppppppd","de" };
+			int word_num = 8;
+			int answer_num = 4;
+			char **results1 = new char*[word_num + 1];
+			Core core;
+			int res = core.gen_chain_char(test_list10, word_num, results1, 0, 0, true);
+			Assert::IsTrue(judge(core.array2string(results1, res), core.array2string(answer1, answer_num)));
+			for (int i = 0; i < res; i++)
+				delete[] results1[i];
+			delete[] results1;
+		}
+		TEST_METHOD(TestMethod23)
+		{
+			int word_num = 3;
+			int answer_num = 0;
+			char **results1 = new char*[word_num + 1];
+			Core core;
+			int res = core.gen_chain_char(test_list11, word_num, results1, 0, 0, true);
+			Assert::IsTrue(res==0);
+			for (int i = 0; i < res; i++)
+				delete[] results1[i];
+			delete[] results1;
+		}
+		TEST_METHOD(TestMethod24)
+		{
+			char *test_list12[1];
+			int word_num = 0;
+			int answer_num = 0;
+			char **results1 = new char*[word_num + 1];
+			Core core;
+			int res = core.gen_chain_char(test_list12, word_num, results1, 0, 0, true);
+			Assert::IsTrue(res == 0);
+			for (int i = 0; i < res; i++)
+				delete[] results1[i];
+			delete[] results1;
 		}
 	};
 }

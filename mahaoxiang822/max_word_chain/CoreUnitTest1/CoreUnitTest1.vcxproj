@@ -99,7 +99,7 @@
     <Link>
       <SubSystem>Windows</SubSystem>
       <AdditionalLibraryDirectories>$(VCInstallDir)UnitTest\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>../max_word_chain/dll_core.lib;../max_word_chain/Debug/pch.obj;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>../max_word_chain/Core.lib;../max_word_chain/Debug/pch.obj;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
