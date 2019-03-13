@@ -65,7 +65,7 @@ wordlist.txt -w "in.txt" -h a -t x -r
 
 GUIBIN目录下打开运行MFC_max_word_chain.exe即可
 
-![我方gui](C:\Users\46436\Desktop\公共部分\公共部分\我方gui.png)
+![我方gui](.\我方gui.png)
 
 若选择直接输入请直接在输入框输入数据，否则选择文件输入，点击选择文件按钮来选择输入文件。
 
