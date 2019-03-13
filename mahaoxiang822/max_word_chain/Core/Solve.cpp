@@ -297,6 +297,8 @@ void remove_same(vector<string> &string_list) {
 
 int Solver::gen_chain_word(char *words[], int len, char *result[], char head, char tail, bool enable_loop) {
 	vector<string> res;
+	if (len == 0)
+		return 0;
 	int length = max_chain_word(array2string(words, len), res, head, tail, enable_loop);
 	if (length != 0)
 		string2array(this->result_list_word, result);
@@ -306,6 +308,8 @@ int Solver::gen_chain_word(char *words[], int len, char *result[], char head, ch
 int Solver::gen_chain_char(char* words[], int len, char* result[], char head, char tail, bool enable_loop) {
 
 	vector<string> res;
+	if (len == 0)
+		return 0;
 	int length = max_chain_char(array2string(words, len), res, head, tail, enable_loop);
 	if (length != 0)
 		string2array(res, result);
