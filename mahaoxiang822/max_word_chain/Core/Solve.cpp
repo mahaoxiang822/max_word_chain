@@ -76,10 +76,6 @@ bool Solver::has_loop() {
 			if (in_degree_copy[i] == 0 && find(stack.begin(), stack.end(), i) == stack.end())
 				indegree_zero_id.push_back(i);
 	}
-	//while (!stack.empty()) {
-		//cout << stack.back()<<endl;
-	//	stack.pop_back();
-	//}
 	if (stack.size() != word_num)
 		return true;
 	return false;
@@ -160,16 +156,8 @@ bool Solver::SPFA(char start_char, bool set_start, char tail_char, bool set_end,
 			result_list_word.push_back(word_list[stack.back()].word);
 		else
 			result_list_char.push_back(word_list[stack.back()].word);
-		//cout << word_list[stack.back()].word << endl;
 		stack.pop_back();
 	}
-
-	/*for (int i = 0; i < word_num; i++) {
-		cout << "word: "<<word_list[i].word <<endl;
-		cout << "dist:" <<dist[i] << endl;
-		cout << path[i] << endl;
-		cout << "-----------------------" << endl;
-	}*/
 	return true;
 }
 bool  Solver::node_in_path(vector<int> path, int v_id, int now_id) {
@@ -177,14 +165,12 @@ bool  Solver::node_in_path(vector<int> path, int v_id, int now_id) {
 	while (index != -1) {
 		if (index == v_id) return true;
 		index = path[index];
-
 	}
 	return false;
 }
 
 //终止条件有两个，一个是这个节点没有出度为0，另外一个是此时想要访问的点之前已经被访问过了
 void Solver::dfs(int v_id, vector<bool> &visit, vector<int> &path, vector<int> &dist, bool longest_word) {
-	//cout << v_id << "  last: " << path[v_id] <<"dist: "<< dist[v_id]<< endl;
 	visit[v_id] = true;
 	for (auto it = digraph[v_id].begin(); it != digraph[v_id].end(); it++) {
 		if (!visit[*it]) {
@@ -231,8 +217,6 @@ void Solver::loop_max_chain(char start_char, bool set_start, char end_set, bool 
 
 	for (auto it = start_set.begin(); it != start_set.end(); it++) {
 		dfs(*it, visit, path[*it], dist[*it], longest_word);
-		//for(int i=0;i<word_num;i++) cout << path[*it][i] << " ";
-		//cout << "-----------------" << endl;
 	}
 
 	//找出想要的答案
@@ -279,7 +263,6 @@ void Solver::loop_max_chain(char start_char, bool set_start, char end_set, bool 
 			result_list_word.push_back(word_list[stack.back()].word);
 		else
 			result_list_char.push_back(word_list[stack.back()].word);
-		//cout << word_list[stack.back()].word << endl;
 		stack.pop_back();
 	}
 }

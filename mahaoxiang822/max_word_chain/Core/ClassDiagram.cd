@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="FullSignature">
+  <Class Name="Core">
+    <Position X="3" Y="1" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAACAAA=</HashCode>
+      <FileName>Core.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Solver">
+    <Position X="6.25" Y="0.5" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAIAAAIEJUUAIAAIAAIIAARAIAACAAAAAgCAQA=</HashCode>
+      <FileName>Solve.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Struct Name="__unnamed_struct_01a6_1">
+    <Position X="0.5" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAABAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Solve.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Typedef Name="word_info" Collapsed="true">
+    <Position X="0.5" Y="1" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Solve.h</FileName>
+    </TypeIdentifier>
+    <AliasOfLine Type="__unnamed_struct_01a6_1" ManuallyRouted="true">
+      <Path>
+        <Point X="1.25" Y="3" />
+        <Point X="1.25" Y="1.553" />
+      </Path>
+    </AliasOfLine>
+  </Typedef>
+  <Font Name="微软雅黑" Size="8.83" />
+</ClassDiagram>
