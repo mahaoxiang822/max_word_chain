@@ -208,7 +208,7 @@
     <None Include="res\MFCmaxwordchain.rc2" />
   </ItemGroup>
   <ItemGroup>
-    <Image Include="C:\Users\46436\Desktop\mzy.ico" />
+    <Image Include="C:\Users\46436\Desktop\bitbug_favicon.ico" />
     <Image Include="res\MFC_max_word_chain.ico" />
   </ItemGroup>
   <ItemGroup>
