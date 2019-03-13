@@ -133,7 +133,6 @@ namespace CoreUnitTest1
 			char **results = new char*[word_num + 1];
 			char *answer[] = { "uv","vw","wx","xy","yz" };
 			int res = Core::gen_chain_word(test_list3, word_num, results, 0, 0, true);
-			//output(results, res);
 			Assert::IsTrue(judge(array2string(results, res), array2string(answer, answer_num)));
 		}
 
@@ -143,7 +142,6 @@ namespace CoreUnitTest1
 			char **results = new char*[word_num + 1];
 			char *answer[] = { "abc","cbd","ddb","bba" };
 			int res = Core::gen_chain_word(test_list3, word_num, results, 0, 'a', true);
-			//output(results, res);
 			Assert::IsTrue(judge(array2string(results, res), array2string(answer, answer_num)));
 		}
 		TEST_METHOD(TestMethod10) {
@@ -156,7 +154,6 @@ namespace CoreUnitTest1
 			}
 			catch (const char*  s) {
 				Assert::IsTrue(strcmp(s, LOOP_ERROR) == 0);
-				//Assert::IsTrue(s == LOOP_ERROR);
 				cout << s << endl;
 			}
 			try {
@@ -168,7 +165,6 @@ namespace CoreUnitTest1
 			}
 			catch (const char*  s) {
 				Assert::IsTrue(strcmp(s, LOOP_ERROR) == 0);
-				//Assert::IsTrue(s == LOOP_ERROR);
 				cout << s << endl;
 			}
 			try {
@@ -180,7 +176,6 @@ namespace CoreUnitTest1
 			}
 			catch (const char*  s) {
 				Assert::IsTrue(strcmp(s, TAIL_CHAR_ERROR) == 0);
-				//Assert::IsTrue(s == LOOP_ERROR);
 				cout << s << endl;
 			}
 			try {
@@ -345,9 +340,6 @@ namespace CoreUnitTest1
 			char **results1 = new char*[word_num + 1];
 			int res = Core::gen_chain_char(test_list12, word_num, results1, 0, 0, true);
 			Assert::IsTrue(res == 0);
-			for (int i = 0; i < res; i++)
-				delete[] results1[i];
-			delete[] results1;
 		}
 	};
 }
